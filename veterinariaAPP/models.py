@@ -1,0 +1,27 @@
+from django.db import models
+
+class Dueño(models.Model):
+    nombre = models.CharField(max_length=50)
+    contacto = models.IntegerField()
+
+    class Meta:
+        verbose_name = "Dueño"
+        verbose_name_plural = "Dueños"
+
+    def __str__(self):
+        return self.nombre     
+
+class Mascota(models.Model):
+    nombre = models.CharField(max_length=50)
+    dueño = models.ForeignKey(Dueño, on_delete=models.CASCADE)
+    edad = models.IntegerField()
+    descripcion = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = "Mascota"
+        verbose_name_plural = "Mascotas"
+    
+    def __str__(self):
+        return self.nombre
+
+class   
